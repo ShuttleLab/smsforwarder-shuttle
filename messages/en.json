@@ -27,7 +27,7 @@
     "notVpnDesc": "SMS Forwarder is a thin client: it never talks to Telegram directly and holds no channel tokens. Each SMS is relayed through the SMS Forwarder service to your Telegram and then forgotten — message bodies aren't kept after delivery. The app ships ready to connect, so there's nothing to configure.",
     "featuresHeading": "What SMS Forwarder does",
     "f1Title": "Real-time capture",
-    "f1Desc": "Catches every incoming SMS via a broadcast receiver plus a foreground-service inbox poll — so nothing is missed, even on aggressive ROMs like Samsung, Xiaomi (MIUI/HyperOS), OPPO, vivo, OnePlus, Realme, Honor and Huawei / HarmonyOS where background limits break naive SMS apps.",
+    "f1Desc": "Catches every incoming SMS via a broadcast receiver plus a foreground-service inbox poll — so nothing is missed, even on aggressive ROMs like Samsung, Xiaomi (MIUI/HyperOS), OPPO, vivo, OnePlus, Realme, Honor, Huawei / HarmonyOS and other Android OEMs where background limits break naive SMS apps.",
     "f2Title": "Forwards to Telegram",
     "f2Desc": "Relays each SMS to your Telegram through a shared bot. Binding is one tap — open the bot, press Start; there are no tokens to copy.",
     "f3Title": "Ready to use — no setup",

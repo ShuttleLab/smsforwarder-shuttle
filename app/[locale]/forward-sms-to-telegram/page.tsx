@@ -153,7 +153,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const keywords =
     locale === "zh"
       ? ["短信转发到 Telegram", "短信转发", "远程收短信", "验证码转发", "验证码转发到 Telegram", "2FA 转发", "安卓短信转发 app", "三星短信转发", "小米短信转发", "MIUI 短信转发", "OPPO 短信转发", "vivo 短信转发", "一加短信转发", "realme 短信转发", "荣耀短信转发", "华为短信转发", "HarmonyOS 短信转发", "出国收短信"]
-      : ["forward SMS to Telegram", "SMS to Telegram bot", "receive SMS remotely", "SMS forwarding Android", "verification code forwarding", "2FA code to Telegram", "read SMS abroad", "Samsung SMS forwarding", "Xiaomi SMS forwarding", "MIUI SMS forwarding", "OPPO SMS forwarding", "vivo SMS forwarding", "OnePlus SMS forwarding", "Realme SMS forwarding", "Honor SMS forwarding", "Huawei SMS forwarding", "HarmonyOS SMS forwarding"];
+      : ["forward SMS to Telegram", "SMS to Telegram bot", "receive SMS remotely", "SMS forwarding Android", "verification code forwarding", "2FA code to Telegram", "read SMS abroad", "Samsung SMS forwarding", "Xiaomi SMS forwarding", "MIUI SMS forwarding", "OPPO SMS forwarding", "vivo SMS forwarding", "OnePlus SMS forwarding", "Realme SMS forwarding", "Honor SMS forwarding", "Huawei SMS forwarding", "HarmonyOS SMS forwarding", "Tecno SMS forwarding", "Infinix SMS forwarding", "Motorola SMS forwarding", "Nothing Phone SMS forwarding"];
   return {
     title: c.title,
     description: c.metaDesc,
