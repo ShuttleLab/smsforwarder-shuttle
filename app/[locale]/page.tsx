@@ -136,7 +136,7 @@ export default async function HomePage({ params }: Props) {
             <p className="mt-3 text-xs text-muted-foreground">{t("requiresAndroid")}</p>
             {!PLAY_AVAILABLE && <p className="mt-1 text-xs text-muted-foreground/70">{t("playComingSoon")}</p>}
           </div>
-          <PhoneFrame label={t("screenshotPlaceholder")} className="mx-auto w-[300px] sm:w-[360px] lg:w-[440px] max-w-full" />
+          <PhoneFrame src="/screenshots/hero.jpg" label={t("screenshotPlaceholder")} className="mx-auto w-[300px] sm:w-[360px] lg:w-[440px] max-w-full" />
         </div>
       </section>
 

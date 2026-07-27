@@ -25,7 +25,7 @@ const structuredData = {
   applicationCategory: "UtilitiesApplication",
   applicationSubCategory: "SMS Forwarding",
   operatingSystem: "Android 8.0+",
-  description: "Free Android app that forwards incoming SMS to your Telegram through your own self-hosted backend. A thin, relay-and-forget client built to keep working on aggressive Chinese ROMs (Huawei / HarmonyOS) — ideal for a phone left plugged in at home.",
+  description: "Free Android app that forwards incoming SMS to your Telegram. A thin, relay-and-forget client built to keep working on aggressive Chinese ROMs (Huawei / HarmonyOS) — ideal for a phone left plugged in at home. Ready to use: sign in and go, no server to set up.",
   url: "https://smsforwarder.shuttlelab.org",
   downloadUrl: "https://github.com/ShuttleLab/SMSForwarder/releases/latest",
   softwareHelp: "https://smsforwarder.shuttlelab.org/",
@@ -37,7 +37,7 @@ const structuredData = {
   featureList: [
     "Real-time SMS capture (broadcast receiver + foreground-service inbox poll)",
     "Forwards to Telegram via a shared bot (one-tap bind)",
-    "Self-hosted backend — channel routing lives on the server",
+    "Ready-to-use backend — channel routing lives on the server, no setup",
     "Reliable delivery with retry and server-side idempotency (no duplicates)",
     "Long-term survival on plugged-in / aggressive-ROM phones",
     "Bilingual (English / 中文), relay-and-forget privacy",
@@ -60,7 +60,7 @@ const structuredData = {
   offers: [{ "@type": "Offer", price: "0", priceCurrency: "USD" }],
 };
 
-const DESC = "Free Android app that forwards the SMS your phone receives to your Telegram, through your own self-hosted backend. A thin, relay-and-forget client engineered to keep running on aggressive Chinese ROMs — ideal for a phone left plugged in at home.";
+const DESC = "Free Android app that forwards the SMS your phone receives to your Telegram. A thin, relay-and-forget client engineered to keep running on aggressive Chinese ROMs — ideal for a phone left plugged in at home. Ready to use, no server setup.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://smsforwarder.shuttlelab.org"),

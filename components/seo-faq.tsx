@@ -33,7 +33,7 @@ export const COMPARISON = {
     heading: "SMS Forwarder vs. other ways to get your texts remotely",
     columns: ["", "SMS Forwarder", "Carrier SMS forwarding", "Cloud SMS-forward apps"],
     rows: [
-      ["Self-hosted — you run the server", "✓", "— (carrier)", "— (their cloud)"],
+      ["Open source (app + backend)", "✓", "n/a", "usually closed"],
       ["Message bodies not retained (relay-and-forget)", "✓", "n/a", "often stored"],
       ["No channel tokens stored in the app", "✓", "n/a", "varies"],
       ["Delivers to Telegram", "✓", "— (only another number)", "✓"],
@@ -46,7 +46,7 @@ export const COMPARISON = {
     heading: "短信转发 与其它「远程收短信」方式的对比",
     columns: ["", "短信转发", "运营商短信转移", "云端转发类 App"],
     rows: [
-      ["自建——服务器你自己跑", "✓", "—（运营商）", "—（对方云端）"],
+      ["开源（App + 后端）", "✓", "不适用", "通常闭源"],
       ["正文不保留（转发即焚）", "✓", "不适用", "常常会存"],
       ["App 内不保存渠道 token", "✓", "不适用", "视产品而定"],
       ["投递到 Telegram", "✓", "—（只能转到另一个号码）", "✓"],
@@ -61,15 +61,15 @@ export const FAQS: { q: Bi; a: Bi }[] = [
   {
     q: { en: "What is SMS Forwarder?", zh: "短信转发是什么？" },
     a: {
-      en: "SMS Forwarder is a free Android app that captures the text messages your phone receives and forwards them to your Telegram. It is a thin client: it uploads each SMS to a small self-hosted backend, which relays it to your channel and then deletes the body. It is built for a phone left plugged in at home so your SMS — verification codes, bank and carrier alerts — reach you anywhere. Requires Android 8.0 (API 26) or later.",
-      zh: "短信转发是一款免费的安卓应用，捕获手机收到的短信并转发到你的 Telegram。它是瘦客户端：把每条短信上传到一个小巧的自建后端，由后端转发到你的渠道后再删除正文。它专为「插电放在家里的手机」设计，让验证码、银行与运营商通知等短信随时随地都能找到你。需要 Android 8.0（API 26）及以上。",
+      en: "SMS Forwarder is a free Android app that captures the text messages your phone receives and forwards them to your Telegram. It is a thin client: it uploads each SMS to the SMS Forwarder backend, which relays it to your Telegram and then deletes the body. It ships ready to use — no server to set up. It is built for a phone left plugged in at home so your SMS — verification codes, bank and carrier alerts — reach you anywhere. Requires Android 8.0 (API 26) or later.",
+      zh: "短信转发是一款免费的安卓应用，捕获手机收到的短信并转发到你的 Telegram。它是瘦客户端：把每条短信上传到短信转发后端，由后端转发到你的 Telegram 后再删除正文。开箱即用——无需搭建服务器。它专为「插电放在家里的手机」设计，让验证码、银行与运营商通知等短信随时随地都能找到你。需要 Android 8.0（API 26）及以上。",
     },
   },
   {
-    q: { en: "Do I need my own server?", zh: "需要自己的服务器吗？" },
+    q: { en: "Do I need to set up a server?", zh: "需要自己搭建服务器吗？" },
     a: {
-      en: "SMS Forwarder needs a backend to relay messages. You can self-host the companion server (a single Go binary + SQLite, no external services) or connect to a shared instance. Self-hosting means the entire path — capture, upload, and delivery to Telegram — is under your control, and message bodies are never retained after delivery.",
-      zh: "短信转发需要一个后端来中转消息。你可以自建配套服务器（单个 Go 二进制 + SQLite，无外部依赖），也可以连到共享实例。自建意味着整条链路——捕获、上传、投递到 Telegram——都在你掌控之中，且正文在投递后绝不保留。",
+      en: "No. The SMS Forwarder backend is already running and operated by ShuttleLab — just install the app, sign in, and bind Telegram. There is nothing to deploy and no token to paste. Both the app and the backend are open source, so you can inspect the code.",
+      zh: "不需要。短信转发的后端已经在运行、由 ShuttleLab 运营——你只要装上 App、登录、绑定 Telegram 即可，无需部署任何东西、也不用粘贴 token。App 与后端均为开源，源码公开可查。",
     },
   },
   {
@@ -89,8 +89,8 @@ export const FAQS: { q: Bi; a: Bi }[] = [
   {
     q: { en: "Are my SMS private? Are they stored anywhere?", zh: "短信隐私如何？会被存起来吗？" },
     a: {
-      en: "The app reads incoming SMS only to forward them; it uploads nothing else. On the backend it is relay-and-forget: a message body lives only until it is delivered, then it is deleted, leaving just a metadata log (result, time, sender) for the operator. There are no ads, no analytics, and no tracking SDKs. If you self-host, no third party is ever in the loop.",
-      zh: "App 读取来信仅为转发，不上传其它任何内容。后端是「转发即焚」：正文只在投递完成前短暂保留，之后即删，只留一份元数据日志（结果、时间、发件人）供运营方查看。没有广告、没有统计、没有追踪 SDK。若你自建，链路里不会有任何第三方。",
+      en: "The app reads incoming SMS only to forward them; it uploads nothing else. The backend is relay-and-forget: a message body lives only until it is delivered to your Telegram, then it is deleted, leaving just a metadata log (result, time, sender). The backend is operated by ShuttleLab and keeps no message bodies after delivery. There are no ads, no analytics, and no tracking SDKs.",
+      zh: "App 读取来信仅为转发，不上传其它任何内容。后端是「转发即焚」：正文只在投递到你的 Telegram 之前短暂保留，之后即删，只留一份元数据日志（结果、时间、发件人）。后端由 ShuttleLab 运营，投递后不保留任何正文。没有广告、没有统计、没有追踪 SDK。",
     },
   },
   {
@@ -110,8 +110,8 @@ export const FAQS: { q: Bi; a: Bi }[] = [
   {
     q: { en: "How is it different from carrier SMS forwarding or a cloud app?", zh: "和运营商短信转移或云端转发 App 有何不同？" },
     a: {
-      en: "Carrier forwarding (if offered) only re-sends to another phone number and may cost per message; a cloud SMS-forward app routes your texts through someone else's server and often stores them. SMS Forwarder is self-hosted and relay-and-forget: it delivers straight to Telegram, keeps no message bodies after delivery, holds no channel tokens in the app, and is engineered to keep running on aggressive Android ROMs.",
-      zh: "运营商转移（若提供）只能转到另一个手机号，且可能按条收费；云端转发 App 会把你的短信经由别人的服务器路由、还常常存起来。短信转发是自建 + 转发即焚：直接投递到 Telegram，投完不留正文，App 内不存渠道 token，并且专门针对国产严苛 ROM 做了保活。",
+      en: "Carrier forwarding (if offered) only re-sends to another phone number and may cost per message; a cloud SMS-forward app routes your texts through someone else's server and often stores them. SMS Forwarder is relay-and-forget and open source: it delivers straight to Telegram, keeps no message bodies after delivery, holds no channel tokens in the app, and is engineered to keep running on aggressive Android ROMs.",
+      zh: "运营商转移（若提供）只能转到另一个手机号，且可能按条收费；云端转发 App 会把你的短信经由别人的服务器路由、还常常存起来。短信转发是转发即焚 + 开源：直接投递到 Telegram，投完不留正文，App 内不存渠道 token，并且专门针对国产严苛 ROM 做了保活。",
     },
   },
 ];
