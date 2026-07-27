@@ -23,8 +23,8 @@ export const USE_CASES: Bi[] = [
     zh: "银行、运营商、快递通知——把交易类短信汇集到你真正会看的 Telegram 会话。",
   },
   {
-    en: "Works on aggressive ROMs — a plugged-in Huawei / Xiaomi / OPPO device keeps forwarding even where background limits kill naive SMS apps.",
-    zh: "适配国产严苛 ROM——插电常开的华为 / 小米 / OPPO 也能持续转发，普通短信 App 在这些系统上往往直接失灵。",
+    en: "Works on aggressive ROMs — a plugged-in Samsung, Xiaomi, OPPO, vivo, OnePlus, Realme, Honor or Huawei / HarmonyOS device keeps forwarding even where background limits kill naive SMS apps.",
+    zh: "适配后台限制严苛的定制 ROM——插电常开的三星、小米、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS 也能持续转发，普通短信 App 在这些系统上往往直接失灵。",
   },
 ];
 
@@ -37,7 +37,7 @@ export const COMPARISON = {
       ["Message bodies not retained (relay-and-forget)", "✓", "n/a", "often stored"],
       ["No channel tokens stored in the app", "✓", "n/a", "varies"],
       ["Delivers to Telegram", "✓", "— (only another number)", "✓"],
-      ["Survives aggressive Chinese ROMs", "✓ broadcast + poll", "n/a", "often killed"],
+      ["Survives aggressive ROMs (Samsung, Xiaomi, OPPO, vivo, OnePlus, Realme, Honor, Huawei)", "✓ broadcast + poll", "n/a", "often killed"],
       ["Works without carrier support / extra fees", "✓", "— (may cost per SMS)", "✓"],
       ["Free", "✓ personal use", "varies", "freemium"],
     ],
@@ -50,7 +50,7 @@ export const COMPARISON = {
       ["正文不保留（转发即焚）", "✓", "不适用", "常常会存"],
       ["App 内不保存渠道 token", "✓", "不适用", "视产品而定"],
       ["投递到 Telegram", "✓", "—（只能转到另一个号码）", "✓"],
-      ["扛得住国产严苛 ROM", "✓ 广播 + 轮询", "不适用", "常被杀"],
+      ["扛得住严苛定制 ROM（三星/小米/OPPO/vivo/一加/realme/荣耀/华为）", "✓ 广播 + 轮询", "不适用", "常被杀"],
       ["无需运营商支持 / 额外资费", "✓", "—（可能按条收费）", "✓"],
       ["免费", "✓ 个人使用", "视情况", "免费增值"],
     ],
@@ -80,10 +80,10 @@ export const FAQS: { q: Bi; a: Bi }[] = [
     },
   },
   {
-    q: { en: "Does it work on Huawei / Xiaomi / HarmonyOS?", zh: "在华为 / 小米 / HarmonyOS 上能用吗？" },
+    q: { en: "Does it work on Samsung, Xiaomi, OPPO, vivo, OnePlus, Realme, Honor or Huawei / HarmonyOS?", zh: "在三星、小米、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS 上能用吗？" },
     a: {
-      en: "Yes — that is a core design goal. On aggressive Chinese ROMs the system often withholds SMS broadcasts from third-party apps or freezes background work, which breaks naive forwarders. SMS Forwarder captures with both a broadcast receiver and a foreground-service poll of the SMS inbox (using a monotonic id cursor), and uploads directly from the live service rather than via background schedulers the OS throttles. Add it to the auto-start whitelist and battery-optimization exemption for best results.",
-      zh: "能——这正是核心设计目标。国产严苛 ROM 常常不给第三方 App 下发短信广播、或冻结后台任务，普通转发工具因此失灵。短信转发同时用广播接收器和前台服务轮询短信库来捕获（基于单调递增的 id 游标），并直接从活着的前台服务上传，而不依赖会被系统限流的后台调度。把它加入自启动白名单并豁免电池优化，效果最佳。",
+      en: "Yes — that is a core design goal. On aggressive ROMs (Samsung, Xiaomi/MIUI/HyperOS, OPPO, vivo, OnePlus, Realme, Honor, Huawei / HarmonyOS) the system often withholds SMS broadcasts from third-party apps or freezes background work, which breaks naive forwarders. SMS Forwarder captures with both a broadcast receiver and a foreground-service poll of the SMS inbox (using a monotonic id cursor), and uploads directly from the live service rather than via background schedulers the OS throttles. Add it to the auto-start whitelist and battery-optimization exemption for best results.",
+      zh: "能——这正是核心设计目标。三星、小米（MIUI/澎湃）、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS 等厂商深度定制的 ROM 常常不给第三方 App 下发短信广播、或冻结后台任务，普通转发工具因此失灵。短信转发同时用广播接收器和前台服务轮询短信库来捕获（基于单调递增的 id 游标），并直接从活着的前台服务上传，而不依赖会被系统限流的后台调度。把它加入自启动白名单并豁免电池优化，效果最佳。",
     },
   },
   {
@@ -111,7 +111,7 @@ export const FAQS: { q: Bi; a: Bi }[] = [
     q: { en: "How is it different from carrier SMS forwarding or a cloud app?", zh: "和运营商短信转移或云端转发 App 有何不同？" },
     a: {
       en: "Carrier forwarding (if offered) only re-sends to another phone number and may cost per message; a cloud SMS-forward app routes your texts through someone else's server and often stores them. SMS Forwarder is relay-and-forget and open source: it delivers straight to Telegram, keeps no message bodies after delivery, holds no channel tokens in the app, and is engineered to keep running on aggressive Android ROMs.",
-      zh: "运营商转移（若提供）只能转到另一个手机号，且可能按条收费；云端转发 App 会把你的短信经由别人的服务器路由、还常常存起来。短信转发是转发即焚 + 开源：直接投递到 Telegram，投完不留正文，App 内不存渠道 token，并且专门针对国产严苛 ROM 做了保活。",
+      zh: "运营商转移（若提供）只能转到另一个手机号，且可能按条收费；云端转发 App 会把你的短信经由别人的服务器路由、还常常存起来。短信转发是转发即焚 + 开源：直接投递到 Telegram，投完不留正文，App 内不存渠道 token，并且专门针对严苛的定制 ROM 做了保活。",
     },
   },
 ];

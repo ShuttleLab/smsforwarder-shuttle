@@ -73,14 +73,14 @@ const EN: Content = {
   signsH2: "What it handles for you",
   signs: [
     "Long / multipart SMS are reassembled and, if needed, split under Telegram's message-length limit so nothing is truncated.",
-    "Aggressive Chinese ROMs (Huawei / HarmonyOS, Xiaomi, OPPO) — capture keeps working via inbox polling where SMS broadcasts are blocked.",
+    "Aggressive ROMs (Samsung, Xiaomi / MIUI / HyperOS, OPPO, vivo, OnePlus, Realme, Honor, Huawei / HarmonyOS) — capture keeps working via inbox polling where SMS broadcasts are blocked.",
     "Reboots and process kills — the service auto-restarts on boot and the upload queue survives, so a restart doesn't lose messages.",
   ],
   faqH2: "Frequently asked questions",
   faqs: [
     { q: "Do I need to set up a server?", a: "No — the SMS Forwarder backend is already running, operated by ShuttleLab. Install the app, sign in, and bind Telegram; there is nothing to deploy and no token to paste. The app and backend are open source." },
     { q: "Which apps can it forward to?", a: "Telegram, via a shared bot. Because channel routing lives on the backend rather than in the app, more destinations can be added server-side without rebuilding the app. Binding Telegram is one tap — open the bot and press Start; no tokens to copy on the phone." },
-    { q: "Will it keep working on a Huawei / HarmonyOS phone?", a: "Yes. On aggressive Chinese ROMs the system often withholds SMS broadcasts from third-party apps and throttles background work. SMS Forwarder captures with both a broadcast receiver and a foreground-service poll of the SMS inbox, and uploads directly from the live service. Add it to the auto-start whitelist and battery-optimization exemption for best results." },
+    { q: "Will it keep working on Samsung, Xiaomi, OPPO, vivo, OnePlus, Realme, Honor or Huawei / HarmonyOS phones?", a: "Yes. On aggressive ROMs (Samsung, Xiaomi/MIUI/HyperOS, OPPO, vivo, OnePlus, Realme, Honor, Huawei / HarmonyOS) the system often withholds SMS broadcasts from third-party apps and throttles background work. SMS Forwarder captures with both a broadcast receiver and a foreground-service poll of the SMS inbox, and uploads directly from the live service. Add it to the auto-start whitelist and battery-optimization exemption for best results." },
     { q: "Are my messages stored anywhere?", a: "The app reads incoming SMS only to forward them. On the backend it is relay-and-forget: a message body lives only until delivered, then it is deleted, leaving just a metadata log (result, time, sender). The backend is operated by ShuttleLab and keeps no message bodies after delivery. There are no ads, no analytics, and no tracking SDKs." },
     { q: "Is it free? Where do I get it?", a: "SMS Forwarder is free, for personal use — no ads, no in-app purchases. Download the APK from GitHub and install it directly. The Android client and the backend server are separate repositories." },
   ],
@@ -123,14 +123,14 @@ const ZH: Content = {
   signsH2: "它帮你处理好的细节",
   signs: [
     "长短信 / 多段短信会被拼接还原；必要时按 Telegram 的长度上限自动分段，绝不截断。",
-    "国产严苛 ROM（华为 / HarmonyOS、小米、OPPO）——在短信广播被拦的地方，靠轮询短信库继续抓取。",
+    "严苛的定制 ROM（三星、小米 / MIUI / 澎湃、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS）——在短信广播被拦的地方，靠轮询短信库继续抓取。",
     "重启与进程被杀——服务开机自启、上传队列跨重启保留，重启不会丢消息。",
   ],
   faqH2: "常见问题",
   faqs: [
     { q: "需要自己搭建服务器吗？", a: "不需要——短信转发的后端已在运行、由 ShuttleLab 运营。装上 App、登录、绑定 Telegram 即可，无需部署任何东西、也不用粘贴 token。App 与后端均为开源。" },
     { q: "能转发到哪些 App？", a: "Telegram，通过一个共享 Bot。由于渠道路由在后端而非 App 里，以后要加更多目的地可以在服务端完成，无需重新编译 App。绑定 Telegram 只需一步——打开 Bot 点 Start，手机上不用复制任何 token。" },
-    { q: "在华为 / HarmonyOS 上能一直用吗？", a: "能。国产严苛 ROM 常常不给第三方 App 下发短信广播、并限流后台任务。短信转发同时用广播接收器和前台服务轮询短信库来捕获，并直接从活着的前台服务上传。把它加入自启动白名单并豁免电池优化，效果最佳。" },
+    { q: "在三星、小米、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS 上能一直用吗？", a: "能。三星、小米（MIUI/澎湃）、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS 等厂商深度定制的 ROM 常常不给第三方 App 下发短信广播、并限流后台任务。短信转发同时用广播接收器和前台服务轮询短信库来捕获，并直接从活着的前台服务上传。把它加入自启动白名单并豁免电池优化，效果最佳。" },
     { q: "我的消息会被存起来吗？", a: "App 读取来信仅为转发。后端是「转发即焚」：正文只在投递完成前保留，之后即删，只留一份元数据日志（结果、时间、发件人）。后端由 ShuttleLab 运营，投递后不保留任何正文。没有广告、没有统计、没有追踪 SDK。" },
     { q: "免费吗？在哪下载？", a: "短信转发免费、供个人使用——无广告、无内购。从 GitHub 下载 APK 直接安装即可。安卓客户端与后端服务器是两个独立的仓库。" },
   ],
@@ -152,8 +152,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const path = `/${SLUG}/`;
   const keywords =
     locale === "zh"
-      ? ["短信转发到 Telegram", "短信转发", "远程收短信", "验证码转发", "验证码转发到 Telegram", "2FA 转发", "自建短信转发", "安卓短信转发 app", "华为短信转发", "出国收短信"]
-      : ["forward SMS to Telegram", "SMS to Telegram bot", "receive SMS remotely", "SMS forwarding Android", "verification code forwarding", "2FA code to Telegram", "self-hosted SMS forwarder", "read SMS abroad", "Huawei SMS forwarding"];
+      ? ["短信转发到 Telegram", "短信转发", "远程收短信", "验证码转发", "验证码转发到 Telegram", "2FA 转发", "安卓短信转发 app", "三星短信转发", "小米短信转发", "MIUI 短信转发", "OPPO 短信转发", "vivo 短信转发", "一加短信转发", "realme 短信转发", "荣耀短信转发", "华为短信转发", "HarmonyOS 短信转发", "出国收短信"]
+      : ["forward SMS to Telegram", "SMS to Telegram bot", "receive SMS remotely", "SMS forwarding Android", "verification code forwarding", "2FA code to Telegram", "read SMS abroad", "Samsung SMS forwarding", "Xiaomi SMS forwarding", "MIUI SMS forwarding", "OPPO SMS forwarding", "vivo SMS forwarding", "OnePlus SMS forwarding", "Realme SMS forwarding", "Honor SMS forwarding", "Huawei SMS forwarding", "HarmonyOS SMS forwarding"];
   return {
     title: c.title,
     description: c.metaDesc,

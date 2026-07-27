@@ -27,7 +27,7 @@
     "notVpnDesc": "短信转发是一个瘦客户端：它不直接对接 Telegram，也不保存任何渠道 token。每条短信都经短信转发服务转发到你的 Telegram，随后即焚——正文在投递后不再保留。App 出厂即可连接，你无需做任何配置。",
     "featuresHeading": "短信转发能做什么",
     "f1Title": "实时捕获",
-    "f1Desc": "通过短信广播接收器 + 前台服务轮询短信库双管齐下，绝不漏收——即使在华为 / HarmonyOS 这类后台限制严苛、会让普通短信 App 失灵的系统上也照样管用。",
+    "f1Desc": "通过短信广播接收器 + 前台服务轮询短信库双管齐下，绝不漏收——即使在三星、小米（MIUI/澎湃）、OPPO、vivo、一加、realme、荣耀、华为 / HarmonyOS 等后台限制严苛、会让普通短信 App 失灵的系统上也照样管用。",
     "f2Title": "转发到 Telegram",
     "f2Desc": "通过一个共享 Bot 把每条短信转发到你的 Telegram。绑定只需一步——打开 Bot、点 Start，不用复制任何 token。",
     "f3Title": "开箱即用 · 无需搭建",

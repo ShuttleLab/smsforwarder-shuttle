@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "SMS Forwarder — Forward incoming SMS to Telegram (Android)",
     short_name: "SMS Forwarder",
-    description: "Automatically forward the SMS your Android phone receives to your Telegram. Ready to use, relay-and-forget, works on aggressive ROMs.",
+    description: "Automatically forward the SMS your Android phone receives to your Telegram. Ready to use, relay-and-forget, works on aggressive ROMs (Samsung, Xiaomi, OPPO, vivo, OnePlus, Realme, Honor, Huawei / HarmonyOS).",
     start_url: "/",
     display: "standalone",
     background_color: "#f5f3ff",
