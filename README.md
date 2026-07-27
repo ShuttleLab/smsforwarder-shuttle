@@ -2,10 +2,10 @@
   <h1>SMS Forwarder — Website</h1>
   <p>
     <strong>Marketing &amp; download landing page for SMS Forwarder</strong><br/>
-    a self-hosted app that forwards incoming SMS to Telegram, by ShuttleLab.
+    a free app that forwards incoming SMS to Telegram, by ShuttleLab.
   </p>
   <p>
-    🌐 <a href="https://smsforwarder.shuttlelab.org">smsforwarder.shuttlelab.org</a>
+    🌐 <a href="https://smsforwarder.shuttlelab.org">Forward SMS to Telegram on Android — SMS Forwarder</a>
     &nbsp;·&nbsp;
     📱 Android app: <a href="https://github.com/ShuttleLab/SMSForwarder">ShuttleLab/SMSForwarder</a>
     &nbsp;·&nbsp;
