@@ -30,9 +30,9 @@ const structuredData = {
   downloadUrl: "https://github.com/ShuttleLab/SMSForwarder/releases/latest",
   softwareHelp: "https://smsforwarder.shuttlelab.org/",
   screenshot: [
-    "https://smsforwarder.shuttlelab.org/screenshots/1.png",
-    "https://smsforwarder.shuttlelab.org/screenshots/2.png",
-    "https://smsforwarder.shuttlelab.org/screenshots/3.png",
+    "https://smsforwarder.shuttlelab.org/screenshots/1.jpg",
+    "https://smsforwarder.shuttlelab.org/screenshots/2.jpg",
+    "https://smsforwarder.shuttlelab.org/screenshots/3.jpg",
   ],
   featureList: [
     "Real-time SMS capture (broadcast receiver + foreground-service inbox poll)",

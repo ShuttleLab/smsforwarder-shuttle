@@ -178,9 +178,9 @@ export default async function HomePage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="mb-10 text-center text-2xl font-bold sm:text-3xl">{t("screenshotsHeading")}</h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <PhoneFrame label={`${t("screenshotPlaceholder")} 1`} className="mx-auto w-full max-w-[420px]" />
-            <PhoneFrame label={`${t("screenshotPlaceholder")} 2`} className="mx-auto w-full max-w-[420px]" />
-            <PhoneFrame label={`${t("screenshotPlaceholder")} 3`} className="mx-auto w-full max-w-[420px]" />
+            <PhoneFrame src="/screenshots/1.jpg" label={`${t("screenshotPlaceholder")} 1`} className="mx-auto w-full max-w-[420px]" />
+            <PhoneFrame src="/screenshots/2.jpg" label={`${t("screenshotPlaceholder")} 2`} className="mx-auto w-full max-w-[420px]" />
+            <PhoneFrame src="/screenshots/3.jpg" label={`${t("screenshotPlaceholder")} 3`} className="mx-auto w-full max-w-[420px]" />
           </div>
         </div>
       </section>
