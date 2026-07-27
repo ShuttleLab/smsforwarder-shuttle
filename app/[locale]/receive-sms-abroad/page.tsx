@@ -13,7 +13,7 @@ import { Download, ArrowRight } from "lucide-react";
 const BASE = "https://smsforwarder.shuttlelab.org";
 const SLUG = "receive-sms-abroad";
 const PATH = "/receive-sms-abroad";
-const DOWNLOAD_URL = "https://github.com/ShuttleLab/SMSForwarder/releases/latest";
+const DOWNLOAD_URL = "https://github.com/ShuttleLab/SMSForwarder/releases/latest/download/SMSForwarder.apk";
 const PILLAR = "forward-sms-to-telegram";
 const PUBLISHED = "2026-07-27";
 

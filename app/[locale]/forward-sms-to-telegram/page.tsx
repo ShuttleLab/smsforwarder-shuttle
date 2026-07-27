@@ -11,7 +11,7 @@ import { Download, ArrowLeft } from "lucide-react";
 
 const BASE = "https://smsforwarder.shuttlelab.org";
 const SLUG = "forward-sms-to-telegram";
-const DOWNLOAD_URL = "https://github.com/ShuttleLab/SMSForwarder/releases/latest";
+const DOWNLOAD_URL = "https://github.com/ShuttleLab/SMSForwarder/releases/latest/download/SMSForwarder.apk";
 const SOURCE_URL = "https://github.com/ShuttleLab/SMSForwarder";
 const BACKEND_URL = "https://github.com/ShuttleLab/smsforwarder-api";
 const PUBLISHED = "2026-07-27";

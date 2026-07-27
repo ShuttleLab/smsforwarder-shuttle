@@ -12,7 +12,7 @@ import { getOgLocale } from "@/lib/i18n/config";
 
 const BASE = "https://smsforwarder.shuttlelab.org";
 const SLUG = "forward-otp-verification-codes-to-telegram";
-const DOWNLOAD_URL = "https://github.com/ShuttleLab/SMSForwarder/releases/latest";
+const DOWNLOAD_URL = "https://github.com/ShuttleLab/SMSForwarder/releases/latest/download/SMSForwarder.apk";
 const PILLAR = "forward-sms-to-telegram";
 const PUBLISHED = "2026-07-27";
 

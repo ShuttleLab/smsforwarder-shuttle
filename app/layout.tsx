@@ -27,7 +27,7 @@ const structuredData = {
   operatingSystem: "Android 8.0+",
   description: "Free Android app that forwards incoming SMS to your Telegram. A thin, relay-and-forget client built to keep working on aggressive ROMs — Samsung, Xiaomi (MIUI/HyperOS), OPPO, vivo, OnePlus, Realme, Honor, Huawei / HarmonyOS — ideal for a phone left plugged in at home. Ready to use: sign in and go, no server to set up.",
   url: "https://smsforwarder.shuttlelab.org",
-  downloadUrl: "https://github.com/ShuttleLab/SMSForwarder/releases/latest",
+  downloadUrl: "https://github.com/ShuttleLab/SMSForwarder/releases/latest/download/SMSForwarder.apk",
   softwareHelp: "https://smsforwarder.shuttlelab.org/",
   screenshot: [
     "https://smsforwarder.shuttlelab.org/screenshots/1.jpg",
