@@ -280,6 +280,22 @@ export default async function ForwardSmsPage({ params }: Props) {
         </div>
       </section>
 
+      <section className="mt-10">
+        <h2 className="text-2xl font-bold">{locale === "zh" ? "相关指南" : "Related guides"}</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground">
+          <li>
+            <a className="text-primary hover:underline" href={locale === "en" ? "/forward-otp-verification-codes-to-telegram/" : `/${locale}/forward-otp-verification-codes-to-telegram/`}>
+              {locale === "zh" ? "把验证码 / OTP 转发到 Telegram" : "Forward OTP & verification codes to Telegram"}
+            </a>
+          </li>
+          <li>
+            <a className="text-primary hover:underline" href={locale === "en" ? "/receive-sms-abroad/" : `/${locale}/receive-sms-abroad/`}>
+              {locale === "zh" ? "出国收短信:人在国外读国内号码的短信" : "Receive SMS abroad — read your home SIM's texts anywhere"}
+            </a>
+          </li>
+        </ul>
+      </section>
+
       <section className="mt-12 rounded-xl border border-border bg-card p-6">
         <h2 className="text-xl font-bold">{c.getH2}</h2>
         <div className="mt-4 flex flex-wrap gap-3">

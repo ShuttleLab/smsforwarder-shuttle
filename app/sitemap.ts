@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     { path: "", priority: 1.0, changeFrequency: "weekly" as const },
     { path: "/forward-sms-to-telegram", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/forward-otp-verification-codes-to-telegram", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/receive-sms-abroad", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/privacy", priority: 0.4, changeFrequency: "yearly" as const },
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" as const },
   ];
