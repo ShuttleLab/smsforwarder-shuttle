@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { canonicalUrl, hreflangAlternates } from "@/lib/seo";
 import {
   Wifi, Globe, Bell, ListChecks, BellRing, Languages,
   Download, ShieldCheck, Smartphone,
@@ -17,23 +18,24 @@ const SOURCE_URL = "https://github.com/ShuttleLab/SMSForwarder";
 const PLAY_AVAILABLE = false;
 const PLAY_URL = "";
 
+// Home-page meta keywords per locale (localized real search terms; unlisted locales fall back to en).
+const HOME_KEYWORDS: Record<string, string[]> = {
+  en: ["SMS Forwarder", "forward SMS to Telegram", "SMS to Telegram bot", "receive SMS remotely", "forward text messages Android", "verification code forwarding", "2FA code to Telegram", "SMS forwarding app Android", "Samsung SMS forwarding", "Xiaomi SMS forwarding", "MIUI SMS forwarding", "OPPO SMS forwarding", "vivo SMS forwarding", "OnePlus SMS forwarding", "Realme SMS forwarding", "Honor SMS forwarding", "Huawei SMS forwarding", "HarmonyOS SMS forwarding", "Tecno SMS forwarding", "Infinix SMS forwarding", "Motorola SMS forwarding", "Nothing Phone SMS forwarding", "read SMS abroad", "free"],
+  zh: ["短信转发", "短信转发到 Telegram", "短信转发到 TG", "远程收短信", "验证码转发", "验证码转发到 Telegram", "2FA 转发", "安卓短信转发 app", "三星短信转发", "小米短信转发", "MIUI 短信转发", "OPPO 短信转发", "vivo 短信转发", "一加短信转发", "realme 短信转发", "荣耀短信转发", "华为短信转发", "HarmonyOS 短信转发", "出国收短信", "免费"],
+};
+
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
-  const baseUrl = "https://smsforwarder.shuttlelab.org";
-  const keywords =
-    locale === "zh"
-      ? ["短信转发", "短信转发到 Telegram", "短信转发到 TG", "远程收短信", "验证码转发", "验证码转发到 Telegram", "2FA 转发", "安卓短信转发 app", "三星短信转发", "小米短信转发", "MIUI 短信转发", "OPPO 短信转发", "vivo 短信转发", "一加短信转发", "realme 短信转发", "荣耀短信转发", "华为短信转发", "HarmonyOS 短信转发", "出国收短信", "免费"]
-      : ["SMS Forwarder", "forward SMS to Telegram", "SMS to Telegram bot", "receive SMS remotely", "forward text messages Android", "verification code forwarding", "2FA code to Telegram", "SMS forwarding app Android", "Samsung SMS forwarding", "Xiaomi SMS forwarding", "MIUI SMS forwarding", "OPPO SMS forwarding", "vivo SMS forwarding", "OnePlus SMS forwarding", "Realme SMS forwarding", "Honor SMS forwarding", "Huawei SMS forwarding", "HarmonyOS SMS forwarding", "Tecno SMS forwarding", "Infinix SMS forwarding", "Motorola SMS forwarding", "Nothing Phone SMS forwarding", "read SMS abroad", "free"];
   return {
     title: t("title"),
     description: t("subtitle"),
-    keywords,
+    keywords: HOME_KEYWORDS[locale] ?? HOME_KEYWORDS.en,
     alternates: {
-      canonical: locale === "en" ? `${baseUrl}/` : `${baseUrl}/${locale}/`,
-      languages: { en: `${baseUrl}/`, zh: `${baseUrl}/zh/`, "x-default": `${baseUrl}/` },
+      canonical: canonicalUrl(locale, ""),
+      languages: hreflangAlternates(""),
     },
   };
 }
@@ -91,8 +93,8 @@ export default async function HomePage({ params }: Props) {
     "@type": "FAQPage",
     mainEntity: FAQS.map((f) => ({
       "@type": "Question",
-      name: locale === "zh" ? f.q.zh : f.q.en,
-      acceptedAnswer: { "@type": "Answer", text: locale === "zh" ? f.a.zh : f.a.en },
+      name: f.q[locale] ?? f.q.en,
+      acceptedAnswer: { "@type": "Answer", text: f.a[locale] ?? f.a.en },
     })),
   };
   const howToSchema = {

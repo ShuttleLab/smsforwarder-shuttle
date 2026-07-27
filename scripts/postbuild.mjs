@@ -7,12 +7,24 @@ import path from "node:path";
 // the build output match what the metadata promises, then generates the
 // service worker with a precache list derived from the real build output:
 //   1. Promote out/en/* to out/ (so "/" serves English) and drop out/en.
-//   2. Patch <html lang> in out/zh/**/*.html from "en" to "zh-CN".
+//   2. Patch <html lang> (and dir="rtl" for RTL locales) in every non-default
+//      locale dir out/<locale>/**/*.html.
 //   3. Emit out/sw.js precaching every generated HTML route + PWA assets.
 
 const out = path.join(process.cwd(), "out");
 const en = path.join(out, "en");
-const zh = path.join(out, "zh");
+
+// Non-default locale dir -> { lang: BCP-47 tag, rtl?: true }. Dirs that don't
+// exist in this build are skipped, so unreleased locales are harmless here.
+const LOCALES = {
+  zh: { lang: "zh-CN" },
+  id: { lang: "id" },
+  vi: { lang: "vi" },
+  pt: { lang: "pt-BR" },
+  es: { lang: "es" },
+  ar: { lang: "ar", rtl: true },
+  hi: { lang: "hi" },
+};
 
 if (fs.existsSync(en)) {
   fs.cpSync(en, out, { recursive: true, force: false, errorOnExist: false });
@@ -22,15 +34,15 @@ if (fs.existsSync(en)) {
   console.log("[postbuild] out/en not found - nothing to promote");
 }
 
-function patchLang(dir) {
+function patchLang(dir, lang, rtl) {
   let patched = 0;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      patched += patchLang(p);
+      patched += patchLang(p, lang, rtl);
     } else if (entry.name.endsWith(".html")) {
       const html = fs.readFileSync(p, "utf8");
-      const next = html.replace('<html lang="en"', '<html lang="zh-CN"');
+      const next = html.replace('<html lang="en"', `<html lang="${lang}"${rtl ? ' dir="rtl"' : ""}`);
       if (next !== html) {
         fs.writeFileSync(p, next);
         patched += 1;
@@ -40,9 +52,11 @@ function patchLang(dir) {
   return patched;
 }
 
-if (fs.existsSync(zh)) {
-  const n = patchLang(zh);
-  console.log(`[postbuild] patched <html lang> to zh-CN in ${n} file(s) under out/zh`);
+for (const [loc, { lang, rtl }] of Object.entries(LOCALES)) {
+  const dir = path.join(out, loc);
+  if (!fs.existsSync(dir)) continue;
+  const n = patchLang(dir, lang, rtl);
+  console.log(`[postbuild] patched <html lang> -> ${lang}${rtl ? " dir=rtl" : ""} in ${n} file(s) under out/${loc}`);
 }
 
 // ---- Service worker generation ----

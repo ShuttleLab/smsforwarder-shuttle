@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { canonicalUrl, hreflangAlternates } from "@/lib/seo";
+
+const PATH = "/privacy";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacyPage" });
-  const baseUrl = "https://smsforwarder.shuttlelab.org";
   return {
     title: `${t("title")} — SMS Forwarder`,
     description: t("intro").slice(0, 155),
     alternates: {
-      canonical: locale === "en" ? `${baseUrl}/privacy/` : `${baseUrl}/${locale}/privacy/`,
-      languages: { en: `${baseUrl}/privacy/`, zh: `${baseUrl}/zh/privacy/`, "x-default": `${baseUrl}/privacy/` },
+      canonical: canonicalUrl(locale, PATH),
+      languages: hreflangAlternates(PATH),
     },
   };
 }
