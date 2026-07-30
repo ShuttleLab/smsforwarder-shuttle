@@ -13,7 +13,11 @@
     "download": "Download",
     "alsoFrom": "Also from ShuttleLab",
     "notePromoDesc": "Markdown editor & sharing",
-    "statusPromoDesc": "Uptime monitoring & alerts"
+    "statusPromoDesc": "Uptime monitoring & alerts",
+    "tools": "Landing Pages",
+    "navForwardSms": "Forward SMS to Telegram",
+    "navForwardOtp": "Forward OTP Codes to Telegram",
+    "navReceiveSms": "Receive SMS Abroad"
   },
   "home": {
     "title": "SMS Forwarder — Forward incoming SMS to Telegram (Android)",

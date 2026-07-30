@@ -13,7 +13,11 @@
     "download": "下载",
     "alsoFrom": "更多来自 ShuttleLab",
     "notePromoDesc": "Markdown 编辑与分享",
-    "statusPromoDesc": "可用性监控与告警"
+    "statusPromoDesc": "可用性监控与告警",
+    "tools": "落地頁",
+    "navForwardSms": "短信轉發到 Telegram",
+    "navForwardOtp": "驗證碼轉發到 Telegram",
+    "navReceiveSms": "出國接收短信"
   },
   "home": {
     "title": "短信转发 — 把收到的短信转发到 Telegram（安卓）",
