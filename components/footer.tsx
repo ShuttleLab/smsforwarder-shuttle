@@ -24,6 +24,7 @@ const SIBLING_SITES: { name: string; host: string; featured?: boolean }[] = [
   { name: "Regex", host: "regex.shuttlelab.org" },
   { name: "Time", host: "time.shuttlelab.org" },
   { name: "NetPulse", host: "netpulse.shuttlelab.org" },
+  { name: "Secretary", host: "secretary.shuttlelab.org" },
 ];
 
 const LANDING_PAGES: { href: string; key: string }[] = [
